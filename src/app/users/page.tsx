@@ -6,12 +6,19 @@ const getData = async () => {
 
     return res.json();
 }
+interface User {
+    id: string;
+    email: string;
+    password: string;
+    createdAt?: string | Date;
+    updatedAt?: string | Date;
+}
 const UsersPage = async () => {
     const data = await getData();
     console.log(data)
     return (
         <ul>
-            {data?.map(user => <li key={user.id}>{user.email}</li>)}
+            {data?.map((user: User) => <li key={user.id}>{user.email}</li>)}
         </ul>
     );
 };
